@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div style="text-align: center;">
+        <form method="get" enctype="multipart/form-data" id="nameForm">
+            <div>
+                <label for="firstname">Vorname</label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+
+            <div>
+                <label for="lastname">Nachname</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+
+            <div>
+                <label for="work">Beruf</label>
+                <input type="text" id="work" name="work" required>
+            </div>
+            <label for="email">E-Mail Adresse</label>
+            <input type="email" id="email" name="email" required>
+            <div>
+
+                <div>
+                    <label for="telNumber">Telefonnummer</label>
+                    <input type="tel" placeholder="0-123-456-7890" id="telNumber" name="telNumber" required>
+                </div>
+
+            </div>
+            <input type="submit" id="submitBtn" />
+            <input type="reset" />
+        </form>
+    </div>
+
+    <!--
+    ?fistname=a&lastname=b
+
+    ?: Start von Formulardaten
+    key1=value1
+    &: Trennzeichen für nächstes key value pair (Zuodnungen)
+
+    {"firstname": "a"}
+    let firstname= "a"
+    -->
+
+    <script src="formcatcher.js"></script>
+</body>
+
+</html>
