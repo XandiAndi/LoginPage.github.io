@@ -1,6 +1,6 @@
-    // todo: Wenn auf den submitBtn gecklikct wird
-    //       sollen die Formulardaten ausgelesen werden
-    // todo: Formulardaten sollen auch ausgelesen werden
+// todo: Wenn auf den submitBtn geklickt wird
+//       sollen die Formulardaten ausgelesen werden
+// todo: Formulardaten sollen auch ausgelesen werden
 
 let submitBtn = document.querySelector("#submitBtn")
 
@@ -8,7 +8,7 @@ function onSubmitBtnClick(event) {
     // preventDefault: Vermeiden des Standard Verhalten des Browsers
     // in diesem Fall: Seite wird vom Browser nicht neu geladen
     event.preventDefault();
-    
+
     let firstname = document.querySelector("#firstname")
     let lastname = document.querySelector("#lastname")
 
@@ -40,5 +40,31 @@ function onSubmitGetFormData(event) {
 
 submitBtn.addEventListener("click", onSubmitGetFormData)
 
-    // könnte man auch so machen
-    // document.getElementById("submitBtn")
+// könnte man auch so machen
+// document.getElementById("submitBtn")
+
+// Daten wieder auslesen
+
+function loadData() {
+    let dataElements = document.getElementById("storedData");
+    dataElements.innerHTML = "";
+
+    for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i)
+        let value = localStorage.getItem(key)
+        if (!value) continue
+
+        let valueObj = JSON.parse(value)
+
+        let item = document.createElement("li")
+
+        item.textContent = `Vorname: ${valueObj.firstname}, Nachname: ${valueObj.lastname}, Beruf: ${valueObj.work}, Email: ${valueObj.email}, Telefonnummer: ${valueObj.telNumber}`
+
+        dataElements.appendChild(item)
+    }
+
+    let allInfo = document.createElement("p");
+    dataElements.appendChild(allInfo);
+}
+
+document.addEventListener("DOMContentLoaded", loadData)
