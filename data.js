@@ -1,11 +1,25 @@
 function loadData() {
     let dataElements = document.getElementById("storedData");
+    let clearBtn = document.getElementById("clearBtn");
     
     if (!dataElements) {
         return
     }
     
     dataElements.innerHTML = "";
+    let hasEntries = localStorage.length > 0;
+
+    if (clearBtn) {
+        if (hasEntries) {
+            clearBtn.style.display = "block";
+        } else {
+            clearBtn.style.display = "none";
+        }
+    }
+
+    if (!hasEntries) {
+        dataElements.innerHTML = "<p>Bitte zuerst anmelden!</p>";
+    }
 
     for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i)
@@ -32,3 +46,10 @@ function loadData() {
 }
 
 document.addEventListener("DOMContentLoaded", loadData)
+
+function clearData() {
+    localStorage.clear();
+    location.reload();
+}
+
+clearBtn.addEventListener("click", clearData)
